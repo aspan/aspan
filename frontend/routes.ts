@@ -1,11 +1,11 @@
-import { Flow } from '@vaadin/flow-frontend';
 import type { Route } from '@vaadin/router';
 import Role from './generated/biz/asplund/app/data/Role';
 import { appStore } from './stores/app-store';
 import './views/home/home-view';
 import './views/main-layout';
+import {PublicFlow} from "Frontend/PublicFlow";
 
-const { serverSideRoutes } = new Flow({
+const { serverSideRoutes, publicServerSideRoutes } = new PublicFlow({
   imports: () => import('../target/frontend/generated-flow-imports'),
 });
 
@@ -85,16 +85,6 @@ export const views: ViewRoute[] = [
       return;
     },
   },
-  {
-    path: 'passwordreset',
-    component: 'password-reset-view',
-    icon: 'la la-key',
-    title: 'Password Reset',
-    action: async (_context, _command) => {
-      await import('./views/passwordreset/password-reset-view');
-      return;
-    },
-  },
 ];
 export const routes: ViewRoute[] = [
   {
@@ -108,7 +98,17 @@ export const routes: ViewRoute[] = [
       return;
     },
   },
-
+  {
+    path: 'passwordreset',
+    component: 'password-reset-view',
+    icon: 'la la-key',
+    title: 'Password Reset',
+    action: async (_context, _command) => {
+      await import('./views/passwordreset/password-reset-view');
+      return;
+    },
+  },
+  ...publicServerSideRoutes,
   {
     path: '',
     component: 'main-layout',

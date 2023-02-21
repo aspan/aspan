@@ -153,18 +153,6 @@ export class MainLayout extends Layout {
         title: 'Address Book',
         icon: 'la la-address-book',
       },
-
-      {
-        path: 'signup',
-        title: 'Signup',
-        icon: 'la la-user',
-      },
-
-      {
-        path: 'passwordreset',
-        title: 'Password Reset',
-        icon: 'la la-key',
-      },
     ];
   }
 }
